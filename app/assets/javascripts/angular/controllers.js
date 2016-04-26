@@ -1,20 +1,6 @@
-var app = angular.module("bookApp", ["ngResource"]);
-
-app.factory("Book", function($resource) {
-  return $resource("/books/:id.json", { id: "@id" },
-    {
-      create:  { method: 'POST' },
-      index:   { method: 'GET', isArray: true },
-      get:    { method: 'GET', isArray: false },
-      update:  { method: 'PUT' },
-      destroy: { method: 'DELETE' }
-    }
-  );
-});
-
 app.controller("ExpoCtrl",['$scope', 'Book', function($scope, Book) {
   $scope.books = Book.index();
-  
+
   $scope.addBook = function() {
   	var attr = {};
     attr.title = $scope.book_title;
