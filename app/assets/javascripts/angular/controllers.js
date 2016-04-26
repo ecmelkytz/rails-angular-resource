@@ -1,4 +1,4 @@
-app.controller("ExpoCtrl",['$scope', 'Book', function($scope, Book) {
+app.controller("BookCtrl",['$scope', 'Book', function($scope, Book) {
   $scope.books = Book.index();
 
   $scope.addBook = function() {
