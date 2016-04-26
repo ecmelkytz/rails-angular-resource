@@ -16,6 +16,14 @@ app.controller("ExpoCtrl",['$scope', 'Book', function($scope, Book) {
     Book.update({ id: book.id, like: book.like});
   }
 
+  $scope.dislikeBook = function(index) {
+    book =$scope.books[index];
+    if (book.like > 0) {
+      book.like -= 1;
+    };
+    Book.update({ id: book.id, like: book.like});
+  }
+
   $scope.deleteBook = function(index) {
     book = $scope.books[index];
     Book.destroy(book);

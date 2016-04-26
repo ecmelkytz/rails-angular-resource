@@ -1,29 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Books</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Like</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.like %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Book', new_book_path %>
+<div class="row" ng-controller="ExpoCtrl">
+  <div class="col-md-6 col-md-offset-3">
+    <center><h1>Books</h1></center>
+    <form class="form-horizontal" ng-submit="addBook()">
+	    <div class="input-group">
+			  <input type="text" class="form-control" ng-model="book_title" required>
+			  <span class="input-group-btn">
+			    <input type="submit" class="btn btn-default" value="Ekle">
+			  </span>
+			</div>
+		</form>
+		<table class="table table-striped table-condensed">
+		  <thead>
+		    <tr>
+		      <th>Başlık</th>
+		      <th>Like</th>
+          <th colspan="2">İşlemler</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+			  <tr ng-repeat="book in books">
+          <td><%= link_to "{{book.title}}", book_path("{{book.id}}") %></td>
+          <td>{{book.like}}</td>
+          <td>
+            <%= link_to "Like", '', 'ng-click' => "likeBook($index)", value:"like", class:"btn btn-success btn-xs" %>
+            <%= link_to "Dislike", '', 'ng-click' => "dislikeBook($index)", value:"dislike", class:"btn btn-danger btn-xs" %>
+            <%= link_to "Remove", '','ng-click' => "deleteBook($index)", value:"remove", class:"btn btn-warning btn-xs" %>
+          </td>
+        </tr>
+      </tbody>
+		</table>
+  </div>
+</div>
