@@ -1,5 +1,5 @@
 #### Bu depo hakkında:
-Rails crud işlemlerini Angularjs'nin ngResource modulunu kullanarak gerçekleştirir.
+Rails crud işlemlerini Angularjs'nin ngResource modülünü kullanarak gerçekleştirir.
 
 #### İlgili ekran görüntüsü:
 ![](http://res.cloudinary.com/dro8cemyf/image/upload/v1461676673/books_ialrlp.png)
